@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task #1</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <div class="container">
+        <div class="slider">
+            <div class="slider_arrow-prev">
+                <a 
+                    class="hide"
+                    id="prev"
+                    onclick="prevHandler();"    
+                >&lt;</a>
+            </div>
+                <img 
+                    src="https://cdn.cnn.com/cnnnext/dam/assets/200211132401-01-dubai-buildings-full-169.jpg" 
+                    alt="img" 
+                    class="slider_image show" 
+                />
+                <img 
+                    src="https://uvibusiness.net/wp-content/uploads/2020/11/141.jpg" 
+                    alt="img" 
+                    class="slider_image hide"
+                    />
+                <img 
+                    src="https://247848-766948-raikfcquaxqncofqfm.stackpathdns.com/wp-content/uploads/2018/05/empire_state.jpg" 
+                    alt="img" 
+                    class="slider_image hide"
+                />
+                <img 
+                    src="https://minecraftbuildinginc.com/wp-content/uploads/2015/06/Fantasy-Mansion-Plot-Download-minecraft-building-ideas-hire-save-water.jpg" 
+                    alt="img" 
+                    class="slider_image hide"
+                />            
+            <div class="slider_arrow-next">
+                <a 
+                    class="show"
+                    id="next"
+                    onclick="nextHandler();"
+                >&gt;</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let currentIndex = 0;
+        const slides = document.querySelectorAll('img');
+        const next = document.getElementById('next');
+        const prev = document.getElementById('prev');
+
+        prevHandler = () => {
+            currentIndex--;
+            updateSlide(currentIndex, 0);
+        }
+
+        nextHandler = () => {
+            currentIndex++;
+            updateSlide(currentIndex, 1);
+        }
+
+        updateSlide = (id, direction) => {
+            direction ? 
+                slides[id - 1].className = slides[id - 1].className.replace('show', 'hide') 
+                : 
+                slides[id + 1].className = slides[id + 1].className.replace('show', 'hide');
+            slides[id].className = slides[id].className.replace('hide', 'show');
+            switch(id) {
+                case 0:
+                    return prev.className = prev.className.replace('show', 'hide');
+                case slides.length - 1:
+                    return next.className = next.className.replace('show', 'hide');
+                default:
+                    prev.className = prev.className.replace('hide', 'show');
+                    next.className = next.className.replace('hide', 'show');
+                    return;
+            }
+        }
+
+    </script>
+</body>
+</html>
