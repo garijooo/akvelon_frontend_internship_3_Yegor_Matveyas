@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task #2</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <div class="container">
+        <form onsubmit="return submitHandler(event);" class="sign_up__from form">
+            <h2 class="form_title">Register</h2>
+
+            <label for="fullname" class="form_label">Full name:</label>
+            <input type="text" name="fullname" id="fullname" class="form_field" required>
+
+            <label for="email" class="form_label">E-Mail:</label>
+            <input type="email" name="email" id="email" class="form_field" required>
+
+            <label for="password" class="form_label">Password:</label>
+            <input type="password" name="password" id="password" class="form_field" required>
+
+            <input type="submit" onsubmit="return submitHandler(event);" value="Sign Up" class="form_submit">
+        </form>
+    </div>
+
+    <script>
+        submitHandler = e => {
+            e.preventDefault();
+            const fullname = document.getElementById("fullname").value; 
+            const email = document.getElementById("email").value;
+            const password = document.getElementById("password").value;
+            if(fullname.match(/^[a-zA-Z\s]{1,120}$/)) 
+                if(password.length >= 8) {
+                    console.log(`full name: ${fullname}`);
+                    console.log(`email: ${email}`);
+                    console.log(`password: ${password}`);
+
+                    alert('form was submitted!');
+                }
+                else return alert(`the minimum length of the password should be at least 8 symbols`);
+            else return alert(`check out your full name, its spelling isn't correct and its size should be from 1 up to 120 letters`);
+        }
+    </script>
+</body>
+</html>
